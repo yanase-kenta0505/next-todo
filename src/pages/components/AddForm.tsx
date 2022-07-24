@@ -3,6 +3,8 @@ import { Button, Input, Flex, ListItem, UnorderedList } from "@chakra-ui/react"
 import { useRecoilState } from "recoil"
 import { todosState } from "../../atoms/TodoListAtom"
 import DeleteBtn from "./DeleteBtn"
+import { EditIcon } from "@chakra-ui/icons"
+import EditBtn from "./EditBtn"
 
 const AddForm = () => {
 	const [todoName, setTodo] = useState("")
@@ -45,6 +47,7 @@ const AddForm = () => {
 						borderBottomWidth="1px"
 					>
 						{todo.todoName}
+						<EditBtn/>
 						<DeleteBtn index={index}/>
 					</ListItem>
 				))}
