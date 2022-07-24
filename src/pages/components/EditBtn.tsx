@@ -15,15 +15,16 @@ import {
 import React, { useState } from "react"
 import { useRecoilState } from "recoil"
 import { todosState } from "../../atoms/TodoListAtom"
+import { Index, TodoState } from "../../types/todosType"
 
-const EditBtn = ({ index }) => {
+const EditBtn = ({ index }: Index) => {
 	const { isOpen, onOpen, onClose } = useDisclosure()
 	const [todos, setTodos] = useRecoilState(todosState)
 	const [todoName, setTodo] = useState(
 		() => JSON.parse(JSON.stringify(todos))[index].todoName
 	)
 	const editTodoName = () => {
-		const copyTodos = JSON.parse(JSON.stringify(todos))
+		const copyTodos:TodoState[] = JSON.parse(JSON.stringify(todos)) 
 		const newTodos = copyTodos.map((copyTodo, i) => {
 			if (i !== index) {
 				return copyTodo

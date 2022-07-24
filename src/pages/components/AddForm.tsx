@@ -8,7 +8,6 @@ const AddForm = () => {
 	const [todos, setTodos] = useRecoilState(todosState)
 
 	const addTodo = () => {
-		console.log(todoName)
 		const newTodos = [
 			...todos,
 			{
