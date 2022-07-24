@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react"
-import { Button, Input, Flex } from "@chakra-ui/react"
+import React, { useState } from "react"
+import { Button, Input, Flex, ListItem, UnorderedList } from "@chakra-ui/react"
 import { useRecoilState } from "recoil"
 import { todosState } from "../../atoms/TodoListAtom"
+import DeleteBtn from "./DeleteBtn"
 
 const AddForm = () => {
 	const [todoName, setTodo] = useState("")
 	const [todos, setTodos] = useRecoilState(todosState)
-	
+
 	const addTodo = () => {
 		console.log(todoName)
 		const newTodos = [
@@ -29,15 +30,25 @@ const AddForm = () => {
 					borderColor="blue.200"
 					onChange={(e) => setTodo(e.target.value)}
 				/>
+
 				<Button colorScheme="teal" ml={4} onClick={addTodo}>
 					Add
 				</Button>
 			</Flex>
-			<ul>
-				{todos.map((todo: any) => (
-					<li key={todo.id}>{todo.todoName}</li>
+			<UnorderedList>
+				{todos.map((todo: any, index: number) => (
+					<ListItem
+						width="90%"
+						key={todo.id}
+						mt={7}
+						borderBottomColor="grey"
+						borderBottomWidth="1px"
+					>
+						{todo.todoName}
+						<DeleteBtn index={index}/>
+					</ListItem>
 				))}
-			</ul>
+			</UnorderedList>
 		</React.Fragment>
 	)
 }

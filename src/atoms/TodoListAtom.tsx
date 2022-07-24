@@ -1,5 +1,4 @@
 import { atom } from "recoil"
-
 interface TodoState {
   id:string,
   todoName:string
