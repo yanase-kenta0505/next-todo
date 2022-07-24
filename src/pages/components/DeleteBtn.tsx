@@ -1,21 +1,18 @@
 import { Button } from "@chakra-ui/react"
 import { useRecoilState } from "recoil"
 import { todosState } from "../../atoms/TodoListAtom"
+import { Index, TodoState } from "../../types/todosType"
 
-interface Props {
-	index: number
-}
 
-const DeleteBtn = (props: Props) => {
+const DeleteBtn = (props: Index) => {
 	const [todos, setTodos] = useRecoilState(todosState)
 
 	const deleteTodo = () => {
 		console.log(typeof props.index)
-		const copyTodos = JSON.parse(JSON.stringify(todos))
+		const copyTodos:TodoState[] = JSON.parse(JSON.stringify(todos))
 		const newTodos = copyTodos.filter(
 			(copyTodo, index: number) => index !== props.index
 		)
-		console.log(newTodos)
 
 		setTodos(newTodos)
 	}

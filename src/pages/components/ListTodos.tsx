@@ -1,10 +1,9 @@
 import { UnorderedList, ListItem } from "@chakra-ui/react"
 import EditBtn from "./EditBtn"
 import DeleteBtn from "./DeleteBtn"
+import { TodosState } from "../../types/todosType"
 
-
-
-const ListTodos = ({todos}) => {
+const ListTodos = ({todos}:TodosState) => {
 	return (
 		<UnorderedList>
 			{todos.map((todo: any, index: number) => (
@@ -16,7 +15,7 @@ const ListTodos = ({todos}) => {
 					borderBottomWidth="1px"
 				>
 					{todo.todoName}
-					<EditBtn index={index}/>
+					<EditBtn index={index} />
 					<DeleteBtn index={index} />
 				</ListItem>
 			))}
