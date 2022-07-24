@@ -16,7 +16,7 @@ const ListTodos = ({todos}) => {
 					borderBottomWidth="1px"
 				>
 					{todo.todoName}
-					<EditBtn />
+					<EditBtn index={index}/>
 					<DeleteBtn index={index} />
 				</ListItem>
 			))}
